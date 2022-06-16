@@ -7,9 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="./src/index.css">
 </head>
-  <body>
+  <body data-bs-spy="scroll" data-bs-target="#navbarSupportedContent">
     <!-- Header -->
-    <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
         <div class="container me-auto">
           <a class="navbar-brand" href="#">
             <img src="./assets/platzi-logo.png" alt="Platzi Logo">
@@ -21,19 +21,19 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">La conferencia</a>
+                <a class="nav-link active" aria-current="page" href="#main">La conferencia</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Los oradores</a>
+                <a class="nav-link" href="#speakers">Los oradores</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Fecha y lugar</a>
+                <a class="nav-link" href="#place-time">Fecha y lugar</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Conviértete en Orador</a>
+                <a class="nav-link" href="#conviertete-en-orador">Conviértete en Orador</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link text-platzi" href="#">Compra de Tickets</a>
+                <a class="nav-link text-platzi" href="#" data-bs-toggle="modal" data-bs-target="#modalCompra">Compra de Tickets</a>
               </li>
             </ul>
           </div>
@@ -67,8 +67,8 @@
                                 estudiantes de Platzi y a los oradores de primer nivel que tenemos
                                 para ti. Te esperamos!
                             </p>
-                            <a href="#" class="btn btn-outline-light">Quiero ser orador</a>
-                            <button type="button" class="btn btn-platzi">Comprar Tickets</button>
+                            <a href="#conviertete-en-orador" class="btn btn-outline-light">Quiero ser orador</a>
+                            <button type="button" class="btn btn-platzi" data-bs-toggle="modal" data-bs-target="#modalCompra">Comprar Tickets</button>
                         </div>
                     </div>
                 </div>
@@ -152,6 +152,52 @@
       </div>
     </section>
     <!-- Lugar y Fecha -->
+    <!-- Conviertete en Orador -->
+    <section id="conviertete-en-orador">
+      <div class="container">
+        <div class="row">
+          <div class="col text-center">
+            <small class="text-uppercase text-center">Conviértete en un</small>
+            <h2>Orador</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col text-center">
+            Anótate como orador para dar una charla <abbr data-bs-toggle="tooltip" title="Charlas de 5 minutos">ignite</abbr>. 
+            Cuéntanos de qué quieres hablar!
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <form class="my-2">
+              <div class="row justify-content-center">
+                <div class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-5 mb-2">
+                  <input type="text" class="form-control" placeholder="Nombre">
+                </div>
+                <div class="col-12 col-sm-6 col-md-6 col-lg-5 col-xl-5 mb-2">
+                  <input type="text" class="form-control" placeholder="Apellido">
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col col-lg-10 col-xl-10">
+                  <textarea name="text" class="form-control form-control-lg" placeholder="Sobre que quieres hablar?"></textarea>
+                  <small class="form-text text-muted">
+                    Recuerda incluir un título para tu carla
+                  </small>
+                </div>
+              </div>
+              <div class="row justify-content-center">
+                <div class="col d-grid mt-4 col-lg-10 col-xl-10">
+                  <button type="button" class="btn btn-platzi btn-block">Enviar</button>
+                </div>
+              </div>
+            </form>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Conviertete en Orador -->
     <!-- Footer -->
     <footer id="footer" class="pb-4 pt-4">
         <div class="container">
@@ -181,6 +227,41 @@
         </div>
     </footer>
     <!-- Footer -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalCompra" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Comprar Tickets</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="row">
+                <div class="col">
+                  <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                </div>
+              </div>
+            </form>
+            <!-- Alerta -->
+            <div class="alert alert-warning" role="alert">
+              Recibirás un correo de confirmación con tus tickets
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-platzi">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="./src/index.js"></script>
   </body>
 </html>
